@@ -33,25 +33,25 @@ def predict_on_video(input_video: str, output_video: str) -> tuple[list[list[tup
         ret, frame = cap.read()
         if not ret:
             break
-        prediction = model.infer(frame)
-        try:
-            class_ids = prediction[0].class_id.tolist()
-            indices = [i for i, val in enumerate(class_ids) if val == 0]
-
-            prediction_results_centers.append([])
-            prediction_results.append([])
-            for index in indices:
-                x1, y1, x2, y2 = prediction[0].xyxy.tolist()[index]
-                #cv2.rectangle(frame, (x1, y1), (x2, y2), color, thickness)
-                prediction_results_centers[-1].append(((x1 + x2) // 2, (y1 + y2)  // 2))
-                prediction_results[-1].append((x1, y1, x2, y2))
+        #prediction = model.infer(frame)
+        #try:
+        #    class_ids = prediction[0].class_id.tolist()
+        #    indices = [i for i, val in enumerate(class_ids) if val == 0]
+#
+        #    prediction_results_centers.append([])
+        #    prediction_results.append([])
+        #    for index in indices:
+        #        x1, y1, x2, y2 = prediction[0].xyxy.tolist()[index]
+        #        #cv2.rectangle(frame, (x1, y1), (x2, y2), color, thickness)
+        #        prediction_results_centers[-1].append(((x1 + x2) // 2, (y1 + y2)  // 2))
+        #        prediction_results[-1].append((x1, y1, x2, y2))
 
             #out.write(frame)
 
 
-        except Exception as e:
-            print(f"Caught an exception: {e}")
-            print(f"Exception type: {type(e).__name__}")
+        #except Exception as e:
+        #    print(f"Caught an exception: {e}")
+        #    print(f"Exception type: {type(e).__name__}")
 
     cap.release()
     #out.release()
