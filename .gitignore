@@ -1,0 +1,11 @@
+# data and results folders
+Videos/
+results/
+
+.venv
+.idea
+
+.DS_Store
+
+# Roboflow weights since its too big
+weights/
